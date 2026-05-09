@@ -66,7 +66,7 @@
 
 <script>
 function playGame(){
-    window.location.href = "/play/{{ $name }}";
+    window.location.href = "/game/{{ $name }}";
 }
 </script>
 
