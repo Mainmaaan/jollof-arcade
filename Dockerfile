@@ -5,8 +5,8 @@ WORKDIR /app
 COPY . /app
 
 RUN apt-get update && apt-get install -y \
-    unzip zip git curl libzip-dev \
-    && docker-php-ext-install zip
+    unzip zip git curl libzip-dev libpq-dev \
+    && docker-php-ext-install zip pdo pdo_pgsql
 
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
