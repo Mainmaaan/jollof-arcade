@@ -12,9 +12,15 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 RUN composer install --no-dev --optimize-autoloader
 
-# 🔥 CRITICAL FIXES
+RUN php artisan config:clear \
+ && php artisan cache:clear \
+ && php artisan route:clear \
+ && php artisan view:clear
+
+RUN php artisan migrate --force
+
 RUN chmod -R 775 storage bootstrap/cache
 
 EXPOSE 10000
 
-CMD php -S 0.0.0.0:10000 -t public
+CMD php artisan serve --host=0.0.0.0 --port=10000
