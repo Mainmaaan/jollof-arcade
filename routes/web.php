@@ -1,7 +1,3 @@
-<?php
-
-use Illuminate\Support\Facades\Route;
-
-Route::get('/', function () {
-    return 'WORKING';
+<?phpRoute::get('/game/{name}', function ($name) {
+    return "GAME PAGE WORKING: " . $name;
 });
